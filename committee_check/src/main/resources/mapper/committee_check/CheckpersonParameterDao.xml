@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.committee.politics.committee_check.dao.CheckpersonParameterDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.committee.politics.committee_check.entity.CheckpersonParameterEntity" id="checkpersonParameterMap">
+        <result property="id" column="id"/>
+        <result property="receiveUnfinished" column="receive_unfinished"/>
+        <result property="receiveNotFollow" column="receive_not_follow"/>
+        <result property="receiveEffect" column="receive_effect"/>
+        <result property="receiveDeduct" column="receive_deduct"/>
+        <result property="receivePut" column="receive_put"/>
+        <result property="drivingVisit" column="driving_visit"/>
+        <result property="drivingManage" column="driving_manage"/>
+        <result property="drivingUnion" column="driving_union"/>
+        <result property="notSatisfied" column="not_satisfied"/>
+    </resultMap>
+
+
+</mapper>
