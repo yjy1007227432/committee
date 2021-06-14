@@ -60,7 +60,6 @@ public class CheckpersonParameterController {
     //@RequiresPermissions("committee_check:checkpersonparameter:save")
     public R save(@RequestBody CheckpersonParameterEntity checkpersonParameter){
 		checkpersonParameterService.save(checkpersonParameter);
-
         return R.ok();
     }
 
