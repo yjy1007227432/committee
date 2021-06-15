@@ -13,8 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+
 
 
 @Slf4j
@@ -31,11 +30,11 @@ public class HttpClientPost {
 
     private static String key;
 
-    @Value(value="${call-parameters.version}")
+    @Value(value="call-parameters.version")
     public void setVersion(String version) {
         HttpClientPost.version = version;
     }
-    @Value(value="${call-parameters.systemCode}")
+    @Value(value="call-parameters.systemCode")
     public void setSystemCode(String systemCode) {
         HttpClientPost.systemCode= systemCode;
     }

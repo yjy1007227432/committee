@@ -14,7 +14,24 @@ class EvaluationEventServiceImplTest {
     @Autowired
     private EvaluationEventService evaluationEventService;
     @Test
-    public void getUserByOrgid() throws Exception {
-        System.out.println(evaluationEventService.getUserByOrgid("lp1"));
+    public void getUserByOrgid() {
+        System.out.println(evaluationEventService.getUserByOrgid("lp0"));
     }
+    @Test
+    public void getEventReportCount() {
+        System.out.println(evaluationEventService.getEventReportCount("lp0","202106"));
+    }
+    @Test
+    public void getEventDealCountUrl() {
+        System.out.println(evaluationEventService.getEventDealCountUrl("lp0","202106"));
+    }
+    @Test
+    public void getUserDealCountUrl() {
+        System.out.println(evaluationEventService.getUserDealCountUrl("lp0","202106"));
+    }
+    @Test
+    public void getUserYawpCountUrl() {
+        System.out.println(evaluationEventService.getUserYawpCountUrl("lp0","202106"));
+    }
+
 }
