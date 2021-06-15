@@ -1,12 +1,14 @@
 package com.committee.politics.committee_check.service.impl;
 
 import com.committee.politics.committee_check.service.EvaluationEventService;
+import com.committee.politics.committee_check.vo.FunctionalUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 
 
 @SpringBootTest()
@@ -15,7 +17,8 @@ class EvaluationEventServiceImplTest {
     private EvaluationEventService evaluationEventService;
     @Test
     public void getUserByOrgid() {
-        System.out.println(evaluationEventService.getUserByOrgid("lp0"));
+        List<FunctionalUser>  users = evaluationEventService.getUserByOrgid("lp0");
+        System.out.println();
     }
     @Test
     public void getEventReportCount() {

@@ -30,7 +30,17 @@ public enum BizCodeEnum {
 	LOGINACTT_PASSWORD_ERROR(15003, "账号或密码错误"),
 	SOCIALUSER_LOGIN_ERROR(15004, "社交账号登录失败"),
 	NOT_STOCK_EXCEPTION(21000, "商品库存不足"),
-	PRODUCT_UP_EXCEPTION(11000,"商品上架异常");
+	PRODUCT_UP_EXCEPTION(11000,"商品上架异常"),
+	SUCCESS(200,"成功"),
+	SYSTEM(9999,"系统错误"),
+	REQUESTTIME_NOTNULL(1001,"请求时间不能为空"),
+	VERSION_NOTNULL(1002,"请求版本不能为空"),
+	USERID_NOTNULL(1004,"请求用户签名不能为空"),
+	SIGN_NOTNULL(1003,"请求签名不能为空"),
+	REQUEST_TIMEOUT(1004,"请求时间超时"),
+	REQUEST_FORMAT_ERROR(1006,"请求时间格式不正确"),
+	SIGN_ERROR(1007,"报文签名不符");
+
 
 	private int code;
 

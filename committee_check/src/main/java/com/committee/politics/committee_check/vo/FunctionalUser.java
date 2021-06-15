@@ -18,5 +18,5 @@ public class FunctionalUser {
     private String departid;
     private String departname;
     private int eventCount;
-    private String yawpCount;
+    private int yawpCount;
 }

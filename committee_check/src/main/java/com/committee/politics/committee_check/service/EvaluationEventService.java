@@ -14,12 +14,14 @@ import java.util.List;
  * 华数对应接口提供
  */
 public interface EvaluationEventService {
-    String  getUserByOrgid(String orgid);
-    String getEventReportCount(String orgid, String month);
 
-    String getEventDealCountUrl(String orgId, String month);
+    List<FunctionalUser> getUserByOrgid(String orgid);
 
-    String getUserYawpCountUrl(String orgId, String month);
+    List<FunctionalUser> getEventReportCount(String orgid, String month);
 
-    String getUserDealCountUrl(String orgId, String month);
+    List<FunctionalUser> getEventDealCountUrl(String orgId, String month);
+
+    List<FunctionalUser> getUserYawpCountUrl(String orgId, String month);
+
+    List<FunctionalUser> getUserDealCountUrl(String orgId, String month);
 }
