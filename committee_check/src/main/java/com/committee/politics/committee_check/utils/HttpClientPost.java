@@ -24,31 +24,11 @@ public class HttpClientPost {
     /**
      * 本平台提供给外部系统的API版本
      */
-    private static String version;
-
-    private static String systemCode;
-
-    private static String key;
-
-    @Value(value="call-parameters.version")
-    public void setVersion(String version) {
-        HttpClientPost.version = version;
-    }
-    @Value(value="call-parameters.systemCode")
-    public void setSystemCode(String systemCode) {
-        HttpClientPost.systemCode= systemCode;
-    }
-    @Value(value="${call-parameters.key}")
-    public void setKey(String key) {
-        HttpClientPost.key = key;
-    }
     public static String loadJson(String url) throws Exception {
         //读取url,返回json串
         StringBuilder json = new StringBuilder();
-        String requestTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String sign = MD5.encode(key+requestTime+version+systemCode);
-        URL oracle = new URL(url+"&sign="+sign+"&requestTime="+requestTime+"&systemCode="+systemCode+"&version="+version);
-        log.info("调用接口"+url+"&sign="+sign+"&requestTime="+requestTime+"&systemCode="+systemCode+"&version="+version);
+        URL oracle = new URL(url);
+        log.info("调用接口"+url);
         URLConnection yc = oracle.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
         String inputLine = null;

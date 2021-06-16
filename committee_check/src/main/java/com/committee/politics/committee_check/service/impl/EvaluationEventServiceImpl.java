@@ -4,11 +4,16 @@ import com.alibaba.fastjson.JSON;
 import com.committee.politics.committee_check.service.EvaluationEventService;
 import com.committee.politics.committee_check.utils.CALLR;
 import com.committee.politics.committee_check.utils.HttpClientPost;
+import com.committee.politics.committee_check.utils.MD5;
 import com.committee.politics.committee_check.vo.FunctionalUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
+import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,6 +39,28 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
     @Value("${call-URL.getUserYawpCountUrl}")
     private String getUserYawpCountUrl;
 
+    @Value(value="call-parameters.version")
+    private  String version;
+
+    @Value(value="call-parameters.systemCode")
+    private  String systemCode;
+
+    @Value(value="${call-parameters.key}")
+    private  String key;
+
+    private String appendUrl() {
+      String requestTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String sign = null;
+        try {
+            sign = MD5.encode(key+requestTime+version+systemCode);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
+        }
+        String url = "&sign="+sign+"&requestTime="+requestTime+"&systemCode="+systemCode+"&version="+version;
+        return url;
+    }
+
 
     /**
      * 4.1查询职能部门用户信息
@@ -42,7 +69,7 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
      */
     @Override
     public List<FunctionalUser> getUserByOrgid(String orgid){
-        String url = "http://" + baseUrl + getUserByOrgIdUrl + "?orgid=" + orgid;
+        String url = "http://" + baseUrl + getUserByOrgIdUrl + "?orgid=" + orgid + this.appendUrl();
         String result = "";
         try {
             result = HttpClientPost.loadJson(url);
@@ -70,7 +97,7 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
 
     @Override
     public List<FunctionalUser> getEventReportCount(String orgId, String month){
-        String url = "http://" + baseUrl + getEventReportCountUrl + "?orgid=" + orgId + "&month="+month;
+        String url = "http://" + baseUrl + getEventReportCountUrl + "?orgid=" + orgId + "&month="+month + this.appendUrl();
         String result = "";
         try {
             result = HttpClientPost.loadJson(url);
@@ -97,7 +124,7 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
      */
     @Override
     public List<FunctionalUser> getEventDealCountUrl(String orgId, String month){
-        String url = "http://" + baseUrl + getEventDealCountUrl + "?orgid=" + orgId + "&month="+month;
+        String url = "http://" + baseUrl + getEventDealCountUrl + "?orgid=" + orgId + "&month="+month + this.appendUrl();
         String result = "";
         try {
             result = HttpClientPost.loadJson(url);
@@ -125,7 +152,7 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
 
     @Override
     public List<FunctionalUser> getUserYawpCountUrl(String orgId, String month){
-        String url = "http://" + baseUrl + getUserYawpCountUrl + "?orgid=" + orgId + "&month="+month;
+        String url = "http://" + baseUrl + getUserYawpCountUrl + "?orgid=" + orgId + "&month="+month + this.appendUrl();
         String result = "";
         try {
             result = HttpClientPost.loadJson(url);
@@ -152,7 +179,7 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
      */
     @Override
     public List<FunctionalUser> getUserDealCountUrl(String orgId, String month){
-        String url = "http://" + baseUrl + getUserDealCountUrl + "?orgid=" + orgId + "&month="+month;
+        String url = "http://" + baseUrl + getUserDealCountUrl + "?orgid=" + orgId + "&month="+month + this.appendUrl();
         String result = "";
         try {
             result = HttpClientPost.loadJson(url);

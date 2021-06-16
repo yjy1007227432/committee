@@ -17,8 +17,7 @@ class EvaluationEventServiceImplTest {
     private EvaluationEventService evaluationEventService;
     @Test
     public void getUserByOrgid() {
-        List<FunctionalUser>  users = evaluationEventService.getUserByOrgid("lp0");
-        System.out.println();
+        System.out.println(evaluationEventService.getUserByOrgid("lp0"));
     }
     @Test
     public void getEventReportCount() {
