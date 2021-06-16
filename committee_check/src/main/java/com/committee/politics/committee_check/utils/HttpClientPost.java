@@ -31,9 +31,8 @@ public class HttpClientPost {
         log.info("调用接口"+url);
         URLConnection yc = oracle.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-        String inputLine = null;
-        while((inputLine = in.readLine()) != null){
-            json.append(inputLine);
+        while((in.readLine()) != null){
+            json.append(in.readLine());
         }
         in.close();
 

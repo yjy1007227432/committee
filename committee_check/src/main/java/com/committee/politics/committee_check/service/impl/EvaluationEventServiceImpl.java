@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,6 +79,9 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
             if(e instanceof FileNotFoundException){
                 log.error("调用接口路径错误");
             }
+            if(e instanceof UnknownHostException){
+                log.error("根据IP地址名称找不到对应的ip地址");
+            }
         }
         CALLR<FunctionalUser> R = JSON.parseObject(result,CALLR.class);
         if (!R.isResult()){
@@ -106,6 +110,9 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
             if(e instanceof FileNotFoundException){
                 log.error("调用接口路径错误");
             }
+            if(e instanceof UnknownHostException){
+                log.error("根据IP地址名称找不到对应的ip地址");
+            }
         }
         CALLR<FunctionalUser> R = JSON.parseObject(result,CALLR.class);
         if (!R.isResult()){
@@ -132,6 +139,9 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
             e.printStackTrace();
             if(e instanceof FileNotFoundException){
                 log.error("调用接口路径错误");
+            }
+            if(e instanceof UnknownHostException){
+                log.error("根据IP地址名称找不到对应的ip地址");
             }
         }
         CALLR<FunctionalUser> R = JSON.parseObject(result,CALLR.class);
@@ -161,6 +171,9 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
             if(e instanceof FileNotFoundException){
                 log.error("调用接口路径错误");
             }
+            if(e instanceof UnknownHostException){
+                log.error("根据IP地址名称找不到对应的ip地址");
+            }
         }
         CALLR<FunctionalUser> R = JSON.parseObject(result,CALLR.class);
         if (!R.isResult()){
@@ -187,6 +200,9 @@ public class EvaluationEventServiceImpl implements EvaluationEventService {
             e.printStackTrace();
             if(e instanceof FileNotFoundException){
                 log.error("调用接口路径错误");
+            }
+            if(e instanceof UnknownHostException){
+                log.error("根据IP地址名称找不到对应的ip地址");
             }
         }
         CALLR<FunctionalUser> R = JSON.parseObject(result,CALLR.class);
